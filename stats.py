@@ -2,50 +2,62 @@ import math
 import csv
 
 def openfiles(path):
-    data = []
+    x = []
+    y = []
     with open(path) as csvfile:
         lists = csv.reader(csvfile)
-        for x in lists:
-            data.append(x)
-    data.pop(0)
-    data2 = [[float(j) for j in i] for i in data]
-    return data2
+        for row in lists:
+            x.append(row[0])
+            y.append(row[1])
+    x.pop(0)
+    y.pop(0)
+    x = [float(i) for i in x]
+    y = [float(i) for i in y]
+    return x, y
 
-def count_x(openfiles):
+def zcount(data):
     count = 0
-    for i in openfiles:
-        if i[0] is not None:
-            count += 1
+    for i in data:
+        count += 1
     return count
 
-def count_y(openfiles):
-    count = 0
-    for i in openfiles:
-        if i[1] is not None:
-            count += 1
-    return count
-
-def mean_x(openfiles):
+def zmean(data):
     list = []
-    for i in openfiles:
-        if i[0] is not None:
-            list.append(i[0])
+    for i in data:
+        list.append(i)
     list = sum(list)
 
-    mean = round(list /count_x(openfiles),3)
-    return mean
-
-def mean_y(openfiles):
-    list = []
-    for i in openfiles:
-        if i[1] is not None:
-            list.append(i[1])
-    list = sum(list)
-
-    mean = round(list / count_y(openfiles), 3)
+    mean = round(list /zcount(data), 3)
     print(mean)
 
+def zvariance(data):
+    n = zcount(data)-1
+    mean = sum(data)/n
+    deviations = []
+    for i in data:
+        deviations.append((mean-i)**2)
+    return (round(sum(deviations)/n),2)
 
-openfiles('/Users/deana/documents/projects/python-basic-stats-deanastuart/dataOne.csv')
-# count_x(openfiles('/Users/deana/documents/projects/python-basic-stats-deanastuart/dataOne.csv'))
-mean_y(openfiles('/Users/deana/documents/projects/python-basic-stats-deanastuart/dataOne.csv'))
+def zmode()
+
+def zmedian():
+    pass
+
+def zmode():
+    pass
+
+def zstdev():
+    pass
+
+def zstderr():
+    pass
+
+def zcorr(lista,listb)
+
+
+
+
+x,y = openfiles('/Users/deana/documents/projects/python-basic-stats-deanastuart/dataOne.csv')
+zcount(x)
+zmean(x)
+zvariance(x)
