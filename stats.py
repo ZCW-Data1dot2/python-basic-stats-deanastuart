@@ -1,4 +1,5 @@
-import math
+from math import sqrt
+from collections import Counter
 import csv
 
 def openfiles(path):
@@ -28,7 +29,7 @@ def zmean(data):
     list = sum(list)
 
     mean = round(list /zcount(data), 3)
-    print(mean)
+    return mean
 
 def zvariance(data):
     n = zcount(data)-1
@@ -36,28 +37,55 @@ def zvariance(data):
     deviations = []
     for i in data:
         deviations.append((mean-i)**2)
-    return (round(sum(deviations)/n),2)
+    variance = sum(deviations) /n
+    return round(variance,2)
 
-def zmode()
+def zmedian(data):
+    sorted_list = []
 
-def zmedian():
-    pass
+    while data:
+        minimum = data[0]
+        for x in data:
+            if x < minimum:
+                minimum = x
+        sorted_list.append(minimum)
+        data.remove(minimum)
 
-def zmode():
-    pass
+    n= len(sorted_list)
+    if zcount(sorted_list) % 2 == 0:
+        median1 = sorted_list[n//2]
+        median2 = sorted_list[n//-1]
+        median = (median1 + median2)/2
+    else:
+        median = sorted_list[n//2]
+    return median
 
-def zstdev():
-    pass
+def zmode(data):
+    mode = max(data, key = data.count)
+    return mode
+def zstdev(data):
+    return sqrt(zvariance(data))
 
-def zstderr():
-    pass
+def zstderr(data):
+    return zstdev(data)/sqrt(zcount(data))
 
-def zcorr(lista,listb)
+def cov(lista, listb):
+    sum=0
+    if zcount(lista) == zcount(listb):
+        for i in range(0,zcount(lista)):
+            sum += (lista[i] - zmean(lista) * (listb[i] - zmean(listb)))
+        cov = sum/(zcount(lista) - 1)
+    return cov
 
+def zcorr(lista,listb):
+    correlation = cov(lista,listb) / (zstdev(lista) * zstdev(listb))
 
+    print(correlation)
 
 
 x,y = openfiles('/Users/deana/documents/projects/python-basic-stats-deanastuart/dataOne.csv')
-zcount(x)
-zmean(x)
-zvariance(x)
+# zcount(x)
+# zmean(x)
+# zvariance(x)
+# zcorr(x,y)
+zmode(x)
