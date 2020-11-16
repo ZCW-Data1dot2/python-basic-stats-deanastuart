@@ -1,5 +1,5 @@
-#!/Users/deana/Documents/projects/python-basics-stats-deanastuart/
-from stats.py import *
+
+from zstats import stats.py
 import unittest
 
 class TestIO(unittest.TestCase):

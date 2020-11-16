@@ -1,3 +1,4 @@
+#!/Users/deana/Documents/projects/python-basics-stats-deanastuart/
 from math import sqrt
 import csv
 

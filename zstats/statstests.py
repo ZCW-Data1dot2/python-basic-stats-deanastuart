@@ -1,5 +1,5 @@
-#!/Users/deana/Documents/projects/python-basics-stats-deanastuart/
-from stats.py import *
+
+from zstats import stats
 
 
 data0 = [1.0, 2.0, 3.0, 4.0, 5.0]
