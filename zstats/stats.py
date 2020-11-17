@@ -1,4 +1,4 @@
-#!/Users/deana/Documents/projects/python-basics-stats-deanastuart/
+#!/Users/deana/Documents/projects/python-basics-stats-deanastuart/zstats/
 from math import sqrt
 import csv
 
